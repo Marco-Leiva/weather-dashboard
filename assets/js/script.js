@@ -15,8 +15,21 @@ let getCityWeather = function(city) {
                 alert("Error: " + response.statusText);
             }
         })  
-        
+
         .catch(function(error) {
             alert("Unable to connect to OpenWeather");
         })
+};
+
+let searchSubmitHandler = function(event) {
+    event.preventDefault();
+
+    let cityName = $("#cityname").val().trim();
+
+    if(cityName) {
+        getCityWeather(cityName);
+        $("#cityname").val("");
+    } else {
+        alert("Please enter a city name");
+    }
 };
